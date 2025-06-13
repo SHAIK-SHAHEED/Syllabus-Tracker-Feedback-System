@@ -1,0 +1,42 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+</head>
+<body>
+    <div id="notifications-container">
+        <h1 class="notification-title">Notifications</h1>
+        <ul class="notification-list">
+            <% notifications.forEach(notification => { %>
+                <li class="notification-item">
+                    <div class="notification-content">
+                        <strong class="notification-from">From: <%= notification.teacherId.userId %></strong><br>
+                        <strong class="notification-message-label">Message:</strong> 
+                        <span class="notification-message"><%= notification.message %></span><br>
+
+                        <% if (notification.syllabusEntryId) { %>
+                            <strong class="notification-topic-label">Topic:</strong> 
+                            <span class="notification-topic"><%= notification.syllabusEntryId.topicName %></span><br>
+                            <a class="review-link" href="/syllabus/review/<%= notification.syllabusEntryId._id %>">Provide Feedback</a><br>
+                        <% } else { %>
+                            <strong class="notification-topic-label">Topic:</strong> 
+                            <span class="notification-topic">N/A</span><br>
+                        <% } %>
+
+                        <small class="notification-date">Received on: <%= notification.createdAt.toLocaleString() %></small>
+                    </div>
+                    <form action="/syllabus/notifications/<%= notification._id %>" method="POST" class="delete-form">
+                        <button type="submit" class="delete-button">Remove</button>
+                    </form>
+
+                    <!-- Separator Line -->
+                    <hr class="notification-separator">
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

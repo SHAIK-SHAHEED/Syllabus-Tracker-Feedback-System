@@ -1,0 +1,66 @@
+<% layout('layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Quiz</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function addQuestions() {
+            const questionsContainer = document.getElementById('questions-container');
+            const numQuestions = prompt("How many questions would you like to add?");
+            const num = parseInt(numQuestions);
+
+            questionsContainer.innerHTML = ''; // Clear existing questions
+
+            if (num > 0) {
+                for (let i = 0; i < num; i++) {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+                    questionDiv.innerHTML = `
+                        <h3>Question ${i + 1}</h3>
+                        <div class="form-group">
+                            <label for="question-${i}">Question:</label>
+                            <input type="text" id="question-${i}" name="questions[${i}][question]" placeholder="Question" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Options:</label>
+                            <input type="text" name="questions[${i}][options][]" placeholder="Option 1" required>
+                            <input type="text" name="questions[${i}][options][]" placeholder="Option 2" required>
+                            <input type="text" name="questions[${i}][options][]" placeholder="Option 3" required>
+                            <input type="text" name="questions[${i}][options][]" placeholder="Option 4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correctAnswer-${i}">Correct Answer:</label>
+                            <input type="text" id="correctAnswer-${i}" name="questions[${i}][correctAnswer]" placeholder="Correct Answer" required>
+                        </div>
+                    `;
+                    questionsContainer.appendChild(questionDiv);
+                }
+            } else {
+                alert("Please enter a valid number of questions.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="add-topic-container">
+        <h1 class="form-title">Add New Quiz</h1>
+        <button class="btn" onclick="addQuestions()">Add Questions</button>
+        <form action="/syllabus/add-quiz" method="POST" class="add-topic-form">
+            <div class="form-group">
+                <label for="title">Quiz Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="deadline">Deadline:</label>
+                <input type="datetime-local" id="deadline" name="deadline" required>
+            </div>
+            <div id="questions-container">
+                <!-- Questions will be added here -->
+            </div>
+            <button type="submit" class="submit-btn">Add Quiz</button>
+        </form>
+    </div>
+</body>
+</html>

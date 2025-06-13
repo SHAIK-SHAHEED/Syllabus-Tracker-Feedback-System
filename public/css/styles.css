@@ -1,0 +1,412 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@400;600&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-size: 18px; /* Adjusted for professional appearance */
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #ff6600;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #ff6600;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ffe6cc;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ff6600;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 14px 20px;
+    font-size: 18px;
+    background-color: #ff6600;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    background-color: #e65c00;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    table td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    table td:before {
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        content: attr(data-label);
+        font-weight: 600;
+    }
+}
+
+/* Notifications Section */
+#notifications-container {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notification-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.notification-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notification-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.notification-content {
+    margin-bottom: 15px;
+}
+
+.notification-from {
+    font-size: 18px;
+    color: #333;
+}
+
+.notification-message {
+    font-size: 16px;
+    color: #555;
+}
+
+.notification-topic-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.notification-topic {
+    font-size: 16px;
+    color: #555;
+}
+
+.notification-date {
+    font-size: 14px;
+    color: #888;
+}
+
+.review-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #ff6600;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.review-link:hover {
+    background-color: #e65c00;
+}
+
+.delete-button {
+    background-color: #ffcc99;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #ff9966;
+}
+
+/* Separator Line */
+.notification-separator {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+}
+/* Add Topic Form Styles */
+.add-topic-container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-topic-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #e65c00;
+}
+/* Reviews Section */
+#reviews-container {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.review-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.review-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-content {
+    margin-bottom: 15px;
+}
+
+.review-from {
+    font-size: 18px;
+    color: #333;
+}
+
+.review-message {
+    font-size: 16px;
+    color: #555;
+}
+
+.review-rating-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.review-rating {
+    font-size: 16px;
+    color: #555;
+}
+
+.review-date {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Separator Line for Reviews */
+.review-separator {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+}
+/* General Styles for the View Quizzes Container */
+.view-quizzes-container {
+    padding: 30px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles for View Quizzes */
+.view-quizzes-title {
+    font-family: 'Poppins', sans-serif; /* Maintain font consistency */
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Table Styles for View Quizzes */
+.view-quizzes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.view-quizzes-table th, .view-quizzes-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.view-quizzes-table th {
+    background-color: #ff6600;
+    color: white;
+}
+
+.view-quizzes-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.view-quizzes-table tr:hover {
+    background-color: #ffe6cc;
+}
+
+/* No Results Message */
+.no-results-message {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    font-family: 'Poppins', sans-serif; /* Maintain font consistency */
+}

@@ -1,0 +1,54 @@
+<% layout('layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        .dashboard-container {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-header {
+            color: #4e73df; /* Soft blue color */
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .dashboard-header::first-letter {
+            color: orange; /* First letter in orange */
+        }
+        .dashboard-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        a {
+            color: #ff4500;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-header">Welcome to Your Faculty Dashboard 🧑‍🏫</h1>
+        <p class="dashboard-paragraph">
+            As a dedicated educator, we are thrilled to have you here. This dashboard serves as your central hub for managing your teaching responsibilities and enhancing your interaction with students. At the top of the page, you can easily navigate to the Dashboard, which provides an overview of your current classes, upcoming events, and essential notifications. The Table section allows you to view the comprehensive list of topics you have covered and what’s next for your students, helping you stay organized. Utilize the Add New Topic feature to introduce new subjects to your students seamlessly, ensuring they receive timely updates. In the Progress section, you can monitor your students' performance and engagement levels, enabling you to provide tailored support where needed. The See Feedbacks area allows you to view responses and insights from your students, fostering an open dialogue for continuous improvement. Don't forget to check Past Feedbacks to reflect on previous interactions and enhance your teaching strategies. You can also easily Add Author details for your materials, ensuring that all resources are credited properly. Engage your students with assessments by navigating to the Add Quiz section, where you can create quizzes that align with your teaching goals. Finally, access the View Quizzes option to review and manage the quizzes assigned to your students, and when you’re ready to log out, simply click on the Logout option to securely end your session.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Authors</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Authors</h1>
+
+    <!-- Loop through regulations and create a table for each -->
+    <% const regulations = [...new Set(authors.map(author => author.regulation))]; %>
+    <% regulations.forEach(regulation => { %>
+        <h2><%= regulation %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Author</th>
+                    <th>Book</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% authors.forEach(author => { %>
+                    <% if (author.regulation === regulation) { %>
+                        <tr>
+                            <td><%= author.topic %></td>
+                            <td><%= author.authorName %></td>
+                            <td><%= author.bookName %></td>
+                        </tr>
+                    <% } %>
+                <% }); %>
+                <% if (!authors.some(author => author.regulation === regulation)) { %>
+                    <tr>
+                        <td colspan="3">No authors available for this regulation.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% }); %>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* Styling for the Progress Chart page */
+
+/* General page styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 36px;
+    color: #333;
+}
+
+/* Flex container for the charts */
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;           /* Allows cards to wrap to the next line if needed */
+    justify-content: center;    /* Center the charts */
+    padding: 20px;
+}
+
+/* Individual chart card styling */
+.chart-card {
+    width: 300px;              /* Increased width for cards */
+    margin: 15px;              /* Space between cards */
+    background-color: #ffffff; /* White background */
+    border-radius: 15px;       /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px;             /* Increased inner padding */
+    text-align: center;        /* Center text */
+    transition: transform 0.2s; /* Animation effect */
+}
+
+/* Card hover effect */
+.chart-card:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Chart title styling */
+.chart-card h2 {
+    font-size: 22px;  /* Increased font size for titles */
+    margin: 10px 0; /* Top and bottom margin */
+    color: #ff6600; /* Orange theme */
+}
+
+/* Style for the canvas to make it centered */
+canvas {
+    display: block;
+    margin: 0 auto;
+    width: 200px !important;  /* Increased width */
+    height: 200px !important; /* Increased height */
+}
+
+/* Legend styling */
+.legend {
+    display: flex;
+    justify-content: center; /* Center legend items */
+    margin-top: 10px; /* Space above legend */
+}
+
+.legend div {
+    margin: 0 10px; /* Space between legend items */
+    font-size: 14px; /* Legend font size */
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #ff6600; /* Orange theme */
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #e65c00; /* Darker orange on hover */
+    border-radius: 4px;
+}
+
+/* Responsive design */
+@media (max-width: 800px) {
+    .chart-card {
+        width: 250px; /* Smaller width on mobile */
+        margin: 10px;  /* Smaller margin on mobile */
+    }
+
+    h1 {
+        font-size: 28px; /* Smaller title */
+    }
+
+    .navbar a {
+        font-size: 14px; /* Smaller navbar font */
+    }
+}

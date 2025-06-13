@@ -1,0 +1,31 @@
+<!-- views/layouts/layoutUser.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css"> 
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/syllabus/student">Dashboard</a>
+            <a href="/syllabus/table">Table</a>
+            <a href="/syllabus/notifications">Notifications</a>
+            <a href="/syllabus/student/review-analytics">Review Analytics</a>
+            <a href="/syllabus/progress-chart">Progress Chart</a>
+            <a href="/syllabus/view-authors">View Authors</a>
+            <a href="/syllabus/student-view-quizzes">View Quiz Results</a>
+            <a href="/syllabus/quizzes">Quizzes</a>
+        </div>
+        <a href="/syllabus/logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <%- body %> <!-- Render the body content here -->
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+</html>

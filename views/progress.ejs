@@ -1,0 +1,59 @@
+<% layout('/layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress - <%= subject %></title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+</head>
+<body>
+    <h1>Progress for <%= subject %></h1>
+
+    <h2>Completed Topics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (completedTopics.length === 0) { %>
+                <tr>
+                    <td>No completed topics.</td>
+                </tr>
+            <% } else { %>
+                <% completedTopics.forEach(topic => { %>
+                    <tr>
+                        <td><%= topic %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+
+    <h2>Incomplete Topics</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (incompleteTopics.length === 0) { %>
+                <tr>
+                    <td>All topics completed!</td>
+                </tr>
+            <% } else { %>
+                <% incompleteTopics.forEach(topic => { %>
+                    <tr>
+                        <td><%= topic %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+
+    <a href="/syllabus/table">Back to Table</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Quiz Result for <%= quiz.title %></h1>
+    <h2>Your Score: <%= score %> / <%= quiz.questions.length %></h2>
+
+    <h2>Questions</h2>
+    <ul>
+        <% quiz.questions.forEach((q, index) => { %>
+            <li>
+                <p><%= index + 1 %>. <%= q.question %></p>
+                <p>Your Answer: <%= answers[index] %></p>
+                <p>Correct Answer: <%= q.correctAnswer %></p>
+                <p>Options:</p>
+                <ul>
+                    <% q.options.forEach(option => { %>
+                        <li><%= option %></li>
+                    <% }) %>
+                </ul>
+            </li>
+        <% }) %>
+    </ul>
+
+    <a href="/syllabus/quizzes">Back to quizzes</a>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!-- views/review-analytics.ejs -->
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Analytics</title>
+    <link rel="stylesheet" href="/css/chart.css"> <!-- Link to the external CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Review Analytics</h1>
+    <div class="chart-container">
+        <% ratingsData.forEach((data, index) => { %>
+            <canvas id="chart-<%= index %>" width="400" height="200"></canvas>
+        <% }); %>
+    </div>
+
+    <script>
+        const ratingsData = <%- JSON.stringify(ratingsData) %>;
+        const subjects = <%- JSON.stringify(subjects) %>;
+
+        subjects.forEach((subject, index) => {
+            const ctx = document.getElementById(`chart-${index}`).getContext('2d');
+            const data = ratingsData[index].ratings; // Average ratings for the subject
+            const topicNames = ratingsData[index].topicNames; // Topic names for the subject
+
+            const barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: topicNames, // Use topic names for labels
+                    datasets: [{
+                        label: `Average Ratings for ${subject}`,
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Average Ratings'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

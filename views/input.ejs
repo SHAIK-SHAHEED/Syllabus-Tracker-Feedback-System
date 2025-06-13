@@ -1,0 +1,95 @@
+<% layout('/layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Topic</title>
+</head>
+<body>
+    <div class="add-topic-container">
+        <h1 class="form-title">Add New Topic</h1>
+
+        <% if (error) { %>
+            <div class="error"><%= error %></div>
+        <% } %>
+
+        <form action="/syllabus/add" method="POST" class="add-topic-form" style="position: relative;">
+            <div class="form-group">
+                <label for="regulation" class="form-label">Regulation Code:</label>
+                <input type="text" name="regulation" required id="regulation" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="topicName" class="form-label">Topic Name:</label>
+                <input type="text" name="topicName" required id="topicName" class="form-input" autocomplete="off">
+                <div id="suggestions" class="autocomplete-suggestions"></div> <!-- Suggestions dropdown -->
+            </div>
+
+            <div class="form-group">
+                <label for="dateCovered" class="form-label">Date Covered:</label>
+                <input type="date" name="dateCovered" required id="dateCovered" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="timeSpent" class="form-label">Time Spent (in minutes):</label>
+                <input type="number" name="timeSpent" required id="timeSpent" class="form-input">
+            </div>
+
+            <button type="submit" class="btn submit-btn">Add Topic</button>
+        </form>
+    </div>
+
+    <script>
+        // Fetch valid topics based on regulation (for autocomplete suggestions)
+        const topicInput = document.getElementById('topicName');
+        const suggestionsContainer = document.getElementById('suggestions');
+
+        // Fetch suggestions when typing in the topic name field
+        topicInput.addEventListener('input', function() {
+            const regulation = document.getElementById('regulation').value;
+            const topicValue = this.value;
+
+            // If the input is empty, clear suggestions
+            if (!topicValue || !regulation) {
+                suggestionsContainer.innerHTML = '';
+                return;
+            }
+
+            // Fetch valid topics based on the regulation
+            fetch(`/syllabus/topics/${regulation}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Filter suggestions based on user input
+                    const suggestions = data.topics.filter(topic => 
+                        topic.toLowerCase().includes(topicValue.toLowerCase())
+                    );
+
+                    // Clear previous suggestions
+                    suggestionsContainer.innerHTML = '';
+
+                    // Display suggestions
+                    suggestions.forEach(suggestion => {
+                        const suggestionElement = document.createElement('div');
+                        suggestionElement.classList.add('autocomplete-suggestion');
+                        suggestionElement.textContent = suggestion;
+                        suggestionElement.onclick = () => {
+                            topicInput.value = suggestion; // Set the input value to the suggestion
+                            suggestionsContainer.innerHTML = ''; // Clear suggestions
+                        };
+                        suggestionsContainer.appendChild(suggestionElement);
+                    });
+
+                    // If no suggestions, show a message
+                    if (suggestions.length === 0) {
+                        const noResultsElement = document.createElement('div');
+                        noResultsElement.classList.add('autocomplete-suggestion');
+                        noResultsElement.textContent = 'No suggestions available';
+                        suggestionsContainer.appendChild(noResultsElement);
+                    }
+                })
+                .catch(error => console.error('Error fetching topics:', error));
+        });
+    </script>
+</body>
+</html>

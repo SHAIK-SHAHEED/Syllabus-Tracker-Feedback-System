@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <!-- <div class="brand-title">Syllabus Tracker <br>  &nbsp; &nbsp; &nbsp;&nbsp; and <br>Feedback System</div> -->
+        <div class="nav-links">
+            <a href="/syllabus/teacher">Dashboard</a>
+            <a href="/syllabus/tables">Table</a>
+            <a href="/syllabus/add">Add New Topic</a>
+            <a href="/syllabus/progress">Progress</a>
+            <a href="/syllabus/reviews">See Feedbacks</a>
+            <a href="/syllabus/teacher/reviews">Past Feedbacks</a>
+            <a href="/syllabus/add-author">Add Author</a>
+            <a href="/syllabus/add-quiz">Add Quiz</a>
+            <a href="/syllabus/view-quizzes">View Quizzes Score</a>
+            <a href="/syllabus/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <%- body %> <!-- Render the body content here -->
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<% layout('/layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Progress Table</title>
+</head>
+<body>
+    <h1>Syllabus  Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Regulation Code</th>
+                <th>Topic Name</th>
+                <th>Date Covered</th>
+                <th>Time Spent (minutes)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% syllabusEntries.forEach(entry => { %>
+                <tr>
+                    <td><%= entry.regulation %></td>
+                    <td><%= entry.topicName %></td>
+                    <td><%= entry.dateCovered ? new Date(entry.dateCovered).toLocaleDateString() : 'Not Covered' %></td>
+                    <td><%= entry.timeSpent %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Conditional buttons based on role -->
+    <% if (userRole === 'teacher') { %>
+        <a href="/syllabus/add">Add New Topic</a>
+    <% } else { %>
+        <button disabled>Add New Topic (Only Teachers)</button>
+    <% } %>
+</body>
+</html>

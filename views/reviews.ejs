@@ -1,0 +1,34 @@
+<% layout('layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Past Reviews</title>
+    <link rel="stylesheet" href="/css/styles.css">
+<body>
+    <h1>Student Past Reviews</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic Name</th>
+                <th>Student</th>
+                <th>Rating</th>
+                <th>Comments</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% pastReviews.forEach(review => { %> 
+                <tr>
+                    <td><%= review.syllabusEntryId.topicName %></td>
+                    <td><%= review.studentId.name %></td> 
+                    <td><%= review.rating %></td>
+                    <td><%= review.comments %></td>
+                    <td><%= review.createdAt.toDateString() %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Quizzes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .quiz-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .quiz-message {
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 10px;
+        }
+
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+
+        .quiz-option {
+            margin-right: 5px;
+        }
+
+        .quiz-button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-button:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-title">Available Quizzes</h1>
+    <ul>
+        <% quizzes.forEach(quiz => { %>
+            <li class="quiz-container">
+                <h3 class="quiz-title"><%= quiz.title %></h3>
+
+                <% if (quiz.hasSubmitted) { %>
+                    <p class="quiz-message">You have already submitted answers for this quiz.</p>
+                <% } else if (Array.isArray(quiz.questions) && quiz.questions.length > 0) { %>
+                    <form action="/syllabus/submit-quiz/<%= quiz._id %>" method="POST">
+                        <% quiz.questions.forEach((q, index) => { %>
+                            <% if (q && q.question && Array.isArray(q.options)) { %>
+                                <div class="quiz-question">
+                                    <p><%= index + 1 %>. <%= q.question %></p>
+                                    <% q.options.forEach(option => { %>
+                                        <input class="quiz-option" type="radio" name="answers[<%= index %>]" value="<%= option %>" required> <%= option %>
+                                    <% }) %>
+                                </div>
+                            <% } else { %>
+                                <p style="color: red;">Invalid or missing question at position <%= index + 1 %>.</p>
+                            <% } %>
+                        <% }) %>
+                        <button class="quiz-button" type="submit">Submit Answers</button>
+                    </form>
+                <% } else { %>
+                    <p class="quiz-message">No valid questions available for this quiz.</p>
+                <% } %>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

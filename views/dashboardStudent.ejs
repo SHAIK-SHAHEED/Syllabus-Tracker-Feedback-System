@@ -1,0 +1,54 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        .dashboard-container {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-header {
+            color: #4e73df;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .dashboard-header::first-letter {
+            color: orange; /* First letter in orange */
+        }
+        .dashboard-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        a {
+            color: #ff4500;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-header">Welcome to Your Student Dashboard 😊</h1>
+        <p class="dashboard-paragraph">
+            As a valued student, we are delighted to have you here. This dashboard is your central hub for managing your academic journey and enhancing your learning experience. At the top of the page, you can easily navigate to the Table, where you can view your complete syllabus, track the topics covered, and stay updated on what’s coming next in your courses. The Notifications section keeps you informed about important updates from your teachers, including new topics added or feedback on your submissions. Dive into the Review Analytics feature, which allows you to see insights into your performance and the feedback you’ve received from your peers, helping you understand your strengths and areas for improvement. The Progress Chart visually represents your academic achievements, showing how far you've come throughout the semester. You can also View Authors to access the names and references of the materials assigned by your teachers, ensuring you have all the resources at your fingertips. Don't forget to explore the Quizzes section, where you can take assessments to test your knowledge and prepare for upcoming exams. Finally, when you’re ready to log out, simply click on the Logout option to securely end your session. We are excited to support you in achieving your academic goals and are here to ensure you have all the tools you need for success!
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<% layout('layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Pie Charts</title>
+    <link rel="stylesheet" href="/css/progressChart.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Subject Progress</h1>
+
+    <!-- Containers for each pie chart -->
+    <div class="chart-container">
+        <div class="chart-card">
+            <h2>Artificial Intelligence</h2>
+            <canvas id="progressPieChartAI"></canvas>
+            <!-- Keep the legend below -->
+            <div class="legend">
+                <div><span style="color: rgba(255, 159, 64, 1);">&#x25CF;</span> Remaining</div>
+                <div><span style="color: rgba(54, 162, 235, 1);">&#x25CF;</span> Completed</div>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>Computer Organization and Operating Systems</h2>
+            <canvas id="progressPieChartCOOS"></canvas>
+            <div class="legend">
+                <div><span style="color: rgba(255, 159, 64, 1);">&#x25CF;</span> Remaining</div>
+                <div><span style="color: rgba(54, 162, 235, 1);">&#x25CF;</span> Completed</div>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>Compiler Design</h2>
+            <canvas id="progressPieChartCD"></canvas>
+            <div class="legend">
+                <div><span style="color: rgba(255, 159, 64, 1);">&#x25CF;</span> Remaining</div>
+                <div><span style="color: rgba(54, 162, 235, 1);">&#x25CF;</span> Completed</div>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>Managerial Economics and Financial Analysis</h2>
+            <canvas id="progressPieChartMEFA"></canvas>
+            <div class="legend">
+                <div><span style="color: rgba(255, 159, 64, 1);">&#x25CF;</span> Remaining</div>
+                <div><span style="color: rgba(54, 162, 235, 1);">&#x25CF;</span> Completed</div>
+            </div>
+        </div>
+        <div class="chart-card">
+            <h2>Design and Analysis of Algorithms</h2>
+            <canvas id="progressPieChartDAA"></canvas>
+            <div class="legend">
+                <div><span style="color: rgba(255, 159, 64, 1);">&#x25CF;</span> Remaining</div>
+                <div><span style="color: rgba(54, 162, 235, 1);">&#x25CF;</span> Completed</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress data passed from the backend
+        const progressData = <%- JSON.stringify(progressData) %>;
+
+        // Function to create a pie chart for each subject
+        function createPieChart(ctxId, subjectName, progressValue) {
+            const ctx = document.getElementById(ctxId).getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [subjectName, 'Remaining'],
+                    datasets: [{
+                        data: [progressValue, 100 - progressValue], // Progress and remaining
+                        backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 159, 64, 0.6)'],
+                        borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 159, 64, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // This prevents Chart.js from stretching the canvas size
+                    plugins: {
+                        legend: {
+                            display: false, // Disable the legend above the chart
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Create pie charts for each subject
+        createPieChart('progressPieChartAI', 'Artificial Intelligence', progressData['Artificial Intelligence']);
+        createPieChart('progressPieChartCOOS', 'Computer Organization and Operating Systems', progressData['Computer Organization and Operating Systems']);
+        createPieChart('progressPieChartCD', 'Compiler Design', progressData['Compiler Design']);
+        createPieChart('progressPieChartMEFA', 'Managerial Economics and Financial Analysis', progressData['Managerial Economics and Financial Analysis']);
+        createPieChart('progressPieChartDAA', 'Design and Analysis of Algorithms', progressData['Design and Analysis of Algorithms']);
+    </script>
+    
+</body>
+</html>

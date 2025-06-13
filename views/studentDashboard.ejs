@@ -1,0 +1,25 @@
+<% layout('/layouts/layoutUser') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Student Dashboard</h1>
+    </header>
+
+    <main>
+        <h2>Your User ID: <%= userId %></h2>
+        <p>Here you can manage your syllabus entries and progress.</p>
+        <!-- Add more content or features as needed -->
+    </main>
+
+    <footer>
+        <a href="/syllabus/logout">Logout</a> <!-- Link to logout -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<% layout('layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Quizzes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="view-quizzes-container">
+        <h1 class="view-quizzes-title">Quizzes Created</h1>
+
+        <% if (results.length > 0) { %>
+            <table class="view-quizzes-table">
+                <thead>
+                    <tr>
+                        <th>Quiz Title</th>
+                        <th>Roll Number</th>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% results.forEach(result => { %>
+                        <% if (result.scores.length > 0) { %>
+                            <tr>
+                                <td rowspan="<%= result.scores.length %>"><%= result.quizTitle %></td>
+                                <td><%= result.scores[0].studentId.userId %></td> <!-- Accessing roll number of the first student -->
+                                <td><%= result.scores[0].studentId.username %></td>
+                                <td><%= result.scores[0].score %></td>
+                            </tr>
+                            <% for (let index = 1; index < result.scores.length; index++) { %>
+                                <tr>
+                                    <td><%= result.scores[index].studentId.userId %></td> <!-- Roll Number -->
+                                    <td><%= result.scores[index].studentId.username %></td>
+                                    <td><%= result.scores[index].score %></td>
+                                </tr>
+                            <% } %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="4">No results available</td>
+                            </tr>
+                        <% } %>
+                    <% }) %>
+                </tbody>
+            </table>        
+        <% } else { %>
+            <p class="no-results-message">No quizzes available.</p>
+        <% } %>
+    </div>
+</body>
+</html>

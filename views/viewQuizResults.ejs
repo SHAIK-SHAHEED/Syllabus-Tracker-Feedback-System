@@ -1,0 +1,43 @@
+<% layout('layouts/layoutTeacher') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <% if (results.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Quiz Title</th>
+                    <th>Student Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td><%= result.quizTitle %></td>
+                        <td>
+                            <% result.scores.forEach(score => { %>
+                                <p><%= score.studentId.username %></p> <!-- Adjust based on your StudentQuizResult model -->
+                            <% }) %>
+                        </td>
+                        <td>
+                            <% result.scores.forEach(score => { %>
+                                <p><%= score.score %></p> <!-- Adjust based on your StudentQuizResult model -->
+                            <% }) %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No quiz results available.</p>
+    <% } %>
+    
+</body>
+</html>
